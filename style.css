@@ -189,9 +189,10 @@ svg {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(11, 18, 32, 0.82);
+  /* No bottom border (kept seamless), so the fill is a touch more opaque
+     to stop page content ghosting through while scrolling. */
+  background: rgba(11, 18, 32, 0.94);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
 }
 
 .header-inner {
@@ -411,7 +412,6 @@ svg {
   display: grid;
   gap: var(--space-md);
   padding-top: var(--space-lg);
-  border-top: 1px solid var(--border);
 }
 
 .hero-meta .meta-label {
@@ -438,7 +438,6 @@ svg {
 
 .section--alt {
   background: linear-gradient(180deg, rgba(19, 28, 46, 0.55), rgba(11, 18, 32, 0.2));
-  border-block: 1px solid var(--border);
 }
 
 .eyebrow {
@@ -712,7 +711,6 @@ svg {
    ========================================================================== */
 .site-footer {
   padding-block: var(--space-xl);
-  border-top: 1px solid var(--border);
   background: rgba(15, 23, 42, 0.6);
 }
 
