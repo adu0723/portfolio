@@ -977,35 +977,43 @@ html.is-modal-open {
   color: var(--accent-alt);
 }
 
-/* --- Screenshot gallery --- */
-.modal-gallery {
-  display: grid;
-  gap: var(--space-md);
+/* --- Shared image treatments --- */
+.modal-figure {
   margin: 0 0 var(--space-lg);
 }
 
-.modal-figure,
-.gallery-item {
-  margin: 0;
-}
-
-.modal-figure figcaption,
-.gallery-item figcaption {
+.modal-figure figcaption {
   margin-top: var(--space-xs);
   color: var(--text-dim);
   font-size: 0.8rem;
 }
 
-.gallery-item figcaption strong {
+.modal-figure figcaption strong {
   color: var(--text);
   font-weight: 600;
 }
 
-/* Uniform frame per screenshot so mixed source sizes still line up.
+/* Fixed frame for previews, so mixed source sizes still line up.
    object-fit keeps the whole diagram visible instead of cropping devices. */
-.gallery-link {
+.img-frame {
   display: block;
   aspect-ratio: 16 / 10;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  overflow: hidden;
+}
+
+.img-frame .modal-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+/* Detail view: the diagram is the subject, so keep its natural ratio. */
+.img-zoom {
+  display: block;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-soft);
@@ -1013,16 +1021,84 @@ html.is-modal-open {
   transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.gallery-link:hover {
+.img-zoom:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
 }
 
-.gallery-link .modal-placeholder {
-  width: 100%;
-  height: 100%;
+.img-zoom .modal-placeholder {
   border-radius: 0;
-  object-fit: contain;
+}
+
+/* --- Lab list inside the Packet Tracer modal --- */
+.lab-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.lab-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-sm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  transition: transform var(--transition), border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.lab-tile:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.lab-tile:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.lab-tile .card-eyebrow {
+  margin: var(--space-sm) 0 var(--space-2xs);
+}
+
+.lab-tile-title {
+  margin-bottom: var(--space-2xs);
+  font-size: 1.05rem;
+}
+
+.lab-tile-subtitle {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+/* --- Back link inside a lab detail modal --- */
+.modal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-md);
+  padding: var(--space-2xs) var(--space-sm);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition),
+    background-color var(--transition);
+}
+
+.modal-back:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 /* --- Repository call to action --- */
@@ -1154,7 +1230,7 @@ html.is-modal-open {
 }
 
 @media (min-width: 640px) {
-  .modal-gallery {
+  .lab-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1191,7 +1267,9 @@ html.is-modal-open {
   .contact-item,
   .contact-icon,
   .modal-close,
-  .gallery-link,
+  .img-zoom,
+  .lab-tile,
+  .modal-back,
   .hero-meta {
     transition: none;
   }
@@ -1199,7 +1277,8 @@ html.is-modal-open {
   .card:hover,
   .contact-item:hover,
   .btn:hover,
-  .tag:hover {
+  .tag:hover,
+  .lab-tile:hover {
     transform: none;
   }
 

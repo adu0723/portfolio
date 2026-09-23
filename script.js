@@ -4,7 +4,7 @@
    1. Mobile navigation toggle
    2. Scroll reveal (IntersectionObserver)
    3. Active section highlighting
-   4. Project detail modals (<dialog>)
+   4. Modal dialogs (<dialog>), including lab drill-down
    ========================================================================== */
 (function () {
   "use strict";
@@ -95,46 +95,85 @@
     });
   }
 
-  /* ------------------------------------------------------ 4. Project modals */
-  var modalTriggers = document.querySelectorAll("[data-modal-target]");
+  /* ------------------------------------------------------------ 4. Modals */
+  // Dialogs drill down: the project card opens a list of labs, and each lab
+  // opens its own details. Every dialog remembers the element that opened it,
+  // so closing one returns focus to the right place even when that element
+  // now lives inside a dialog that has already been closed.
+  function openerToFocus(dialog) {
+    var el = dialog.__opener;
+    var hops = 0;
 
-  modalTriggers.forEach(function (trigger) {
+    while (el && hops++ < 5) {
+      var owner = el.closest("dialog.modal");
+      if (!owner || owner.open) return el; // still visible, or in a live dialog
+      el = owner.__opener;                 // hop out to the dialog that held it
+    }
+
+    return null;
+  }
+
+  function afterClose(dialog) {
+    // A drill-down may already have opened the next dialog. If so, leave the
+    // scroll lock and the focus alone — the open dialog owns both.
+    if (document.querySelector("dialog.modal[open]")) return;
+
+    document.documentElement.classList.remove("is-modal-open");
+
+    var target = openerToFocus(dialog);
+    if (target) target.focus();
+  }
+
+  function openDialog(dialog, opener) {
+    if (!dialog || dialog.open) return;
+
+    if (opener) dialog.__opener = opener;
+
+    // Drilling down from a tile inside another dialog: close that one first so
+    // only a single modal is ever on screen.
+    var parent = opener ? opener.closest("dialog.modal") : null;
+    if (parent && parent !== dialog) closeDialog(parent);
+
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal(); // native focus trap, Escape handling and backdrop
+    } else {
+      // Fallback where <dialog> modals aren't supported.
+      dialog.setAttribute("open", "");
+      dialog.focus();
+      dialog.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeDialog(dialog);
+      });
+    }
+
+    document.documentElement.classList.add("is-modal-open");
+  }
+
+  function closeDialog(dialog) {
+    // Native close() also fires the "close" event, which runs afterClose().
+    if (typeof dialog.close === "function" && dialog.open) {
+      dialog.close();
+      return;
+    }
+
+    dialog.removeAttribute("open");
+    afterClose(dialog);
+  }
+
+  document.querySelectorAll("[data-modal-target]").forEach(function (trigger) {
     var dialog = document.getElementById(trigger.getAttribute("data-modal-target"));
     if (!dialog) return;
 
-    function cleanup() {
-      document.documentElement.classList.remove("is-modal-open");
-      trigger.focus(); // send focus back to the card that opened it
-    }
-
-    function closeModal() {
-      // Native close() also fires the "close" event, which runs cleanup().
-      if (typeof dialog.close === "function" && dialog.open) {
-        dialog.close();
-        return;
-      }
-      dialog.removeAttribute("open");
-      cleanup();
-    }
-
     trigger.addEventListener("click", function () {
-      if (typeof dialog.showModal === "function") {
-        dialog.showModal(); // native focus trap, Escape handling and backdrop
-      } else {
-        // Fallback where <dialog> modals aren't supported.
-        dialog.setAttribute("open", "");
-        dialog.focus();
-        dialog.addEventListener("keydown", function (event) {
-          if (event.key === "Escape") closeModal();
-        });
-      }
-
-      document.documentElement.classList.add("is-modal-open");
+      openDialog(dialog, trigger);
     });
+  });
 
+  document.querySelectorAll("dialog.modal").forEach(function (dialog) {
     // The "X" close button.
     dialog.querySelectorAll("[data-modal-close]").forEach(function (button) {
-      button.addEventListener("click", closeModal);
+      button.addEventListener("click", function () {
+        closeDialog(dialog);
+      });
     });
 
     // Clicking the backdrop (outside the dialog panel) closes it.
@@ -148,10 +187,29 @@
         event.clientY < box.top ||
         event.clientY > box.bottom;
 
-      if (outsidePanel) closeModal();
+      if (outsidePanel) closeDialog(dialog);
     });
 
-    dialog.addEventListener("close", cleanup);
+    dialog.addEventListener("close", function () {
+      afterClose(dialog);
+    });
+  });
+
+  // "All labs" inside a lab detail: close the detail, re-open the list and keep
+  // the user's place on the tile they came from.
+  document.querySelectorAll("[data-modal-open]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var target = document.getElementById(button.getAttribute("data-modal-open"));
+      if (!target) return;
+
+      var current = button.closest("dialog.modal");
+      var tile = current ? current.__opener : null;
+
+      if (current) closeDialog(current);
+
+      openDialog(target); // the list keeps its own opener (the project card)
+      if (tile) tile.focus();
+    });
   });
 
   // Escape closes the open modal. Most browsers do this natively via the

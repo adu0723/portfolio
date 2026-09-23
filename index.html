@@ -199,13 +199,13 @@
                 Cisco Networking &amp; Simulation Labs
               </button>
             </h3>
-            <p class="card-subtitle">Two documented labs &mdash; SOHO networking and DHCP scoping</p>
+            <p class="card-subtitle">Two documented labs &mdash; pick one for the full breakdown</p>
             <ul class="bullet-list">
               <li>Built a SOHO topology end to end: coax feed, cable splitter, cable modem, wireless router and both wired and wireless clients.</li>
               <li>Configured the router through its web GUI &mdash; 2.4 GHz WLAN with WPA2-Personal (AES), a 10-lease DHCP pool and a custom admin password policy.</li>
               <li>Re-addressed a router to 192.168.5.1 and rebuilt its DHCP scope (start .126, max 75 users), verifying leases with <code>ipconfig</code> and reachability with <code>ping</code>.</li>
             </ul>
-            <p class="card-hint" aria-hidden="true">View details</p>
+            <p class="card-hint" aria-hidden="true">Browse labs</p>
           </article>
 
           <article class="card project-card" data-reveal>
@@ -302,7 +302,7 @@
   <dialog class="modal" id="modal-packet-tracer" aria-labelledby="modal-packet-tracer-title">
     <header class="modal-header">
       <div>
-        <p class="card-eyebrow">Packet Tracer Lab</p>
+        <p class="card-eyebrow">Packet Tracer Labs</p>
         <h2 class="modal-title" id="modal-packet-tracer-title">Cisco Networking &amp; Simulation Labs</h2>
       </div>
       <button class="modal-close" type="button" data-modal-close aria-label="Close project details">
@@ -313,24 +313,36 @@
     </header>
 
     <div class="modal-body">
-      <div class="modal-gallery" role="group" aria-label="Lab topology screenshots">
-        <figure class="gallery-item">
-          <a class="gallery-link" href="images/lab-01-soho-topology.png" target="_blank" rel="noopener">
+      <p class="modal-lead">
+        Documented labs from the Cisco Networking Academy Network Technician pathway. Each lab ships
+        with its own Packet Tracer file (<code>.pka</code>), topology screenshot and write-up in the
+        repository. Pick a lab for the full breakdown.
+      </p>
+
+      <div class="lab-grid">
+        <article class="lab-tile">
+          <div class="img-frame">
             <img class="modal-placeholder" src="images/lab-01-soho-topology.png" width="899" height="482"
                  alt="Packet Tracer topology for lab 01: a cable splitter feeds a cable modem and a TV; the modem links to a home wireless router, which serves a bedroom PC and an office PC, and the splitter reaches an external skillsforall.srv server through a coax cloud." />
-            <span class="sr-only">Open the full-size lab 01 topology (opens in a new tab)</span>
-          </a>
-          <figcaption><strong>Lab 01</strong> &mdash; SOHO network: coax and copper cabling, wireless router, wired and wireless clients.</figcaption>
-        </figure>
+          </div>
+          <p class="card-eyebrow">Lab 01</p>
+          <h3 class="card-title lab-tile-title">
+            <button class="card-trigger" type="button" data-modal-target="modal-lab-01">SOHO Wireless Network</button>
+          </h3>
+          <p class="lab-tile-subtitle">Coax and copper cabling, wireless router GUI, DHCP pool and WPA2-Personal security.</p>
+        </article>
 
-        <figure class="gallery-item">
-          <a class="gallery-link" href="images/lab-02-dhcp-topology.png" target="_blank" rel="noopener">
+        <article class="lab-tile">
+          <div class="img-frame">
             <img class="modal-placeholder" src="images/lab-02-dhcp-topology.png" width="423" height="253"
                  alt="Packet Tracer topology for lab 02: a DHCP-enabled wireless router connected by three Ethernet cables to client PCs labelled PC0, PC1 and PC2." />
-            <span class="sr-only">Open the full-size lab 02 topology (opens in a new tab)</span>
-          </a>
-          <figcaption><strong>Lab 02</strong> &mdash; DHCP on a wireless router: custom IP addressing and scope sizing.</figcaption>
-        </figure>
+          </div>
+          <p class="card-eyebrow">Lab 02</p>
+          <h3 class="card-title lab-tile-title">
+            <button class="card-trigger" type="button" data-modal-target="modal-lab-02">DHCP on a Wireless Router</button>
+          </h3>
+          <p class="lab-tile-subtitle">Router re-addressing, custom DHCP scope sizing and lease verification.</p>
+        </article>
       </div>
 
       <div class="modal-actions">
@@ -343,36 +355,55 @@
         </a>
         <p class="modal-actions-note">Repository: <code>adu0723/cisco-networking-academy-labs</code></p>
       </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-lab-01" aria-labelledby="modal-lab-01-title">
+    <header class="modal-header">
+      <div>
+        <p class="card-eyebrow">Lab 01 &mdash; Packet Tracer</p>
+        <h2 class="modal-title" id="modal-lab-01-title">SOHO Wireless Network</h2>
+      </div>
+      <button class="modal-close" type="button" data-modal-close aria-label="Close lab details">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <button class="modal-back" type="button" data-modal-open="modal-packet-tracer">
+        <span aria-hidden="true">&larr;</span> All labs
+      </button>
+
+      <figure class="modal-figure">
+        <a class="img-zoom" href="images/lab-01-soho-topology.png" target="_blank" rel="noopener">
+          <img class="modal-placeholder" src="images/lab-01-soho-topology.png" width="899" height="482"
+               alt="Packet Tracer topology for lab 01: a cable splitter feeds a cable modem and a TV; the modem links to a home wireless router, which serves a bedroom PC and an office PC, and the splitter reaches an external skillsforall.srv server through a coax cloud." />
+          <span class="sr-only">Open the full-size lab 01 topology (opens in a new tab)</span>
+        </a>
+        <figcaption><strong>Lab 01</strong> &mdash; SOHO topology: coax feed, cable splitter, cable modem, wireless router, wired hosts and a wireless client.</figcaption>
+      </figure>
 
       <p class="modal-lead">
-        Two documented labs from the Cisco Networking Academy Network Technician pathway. Each one
-        ships with its own Packet Tracer file (<code>.pka</code>), topology screenshot and write-up
-        in the repository.
+        End-to-end setup of a small office / home office network: physical cabling, wireless router
+        administration through its web GUI, a tightened DHCP pool, WPA2-Personal security and host
+        connectivity testing.
       </p>
 
-      <h3 class="modal-subtitle">Lab 01 &mdash; SOHO wireless network</h3>
+      <h3 class="modal-subtitle">What I configured</h3>
       <ul class="bullet-list">
         <li>Cabled the physical layer: coaxial feed into a cable splitter, split to the cable modem and TV, then copper straight-through to the router.</li>
         <li>Administered the SOHO wireless router through its web GUI and replaced the default administrative credentials with a custom password policy.</li>
         <li>Configured the DHCP pool with a 10-lease cap to reduce lease exhaustion and limit unknown devices attaching to the network.</li>
         <li>Enabled the 2.4 GHz radio with a custom SSID and WPA2-Personal (AES), then authenticated and associated a wireless laptop.</li>
-        <li>Verified end to end: DHCP addressing on both wired hosts, DNS resolution, and HTTP requests to an external server from wired and wireless clients.</li>
       </ul>
 
-      <h3 class="modal-subtitle">Lab 02 &mdash; DHCP scope on a wireless router</h3>
+      <h3 class="modal-subtitle">Verification</h3>
       <ul class="bullet-list">
-        <li>Deployed three client PCs and a router, cabled from the PC FastEthernet interfaces to the router switch ports with copper straight-through cable.</li>
-        <li>Re-addressed the router from its factory default to <code>192.168.5.1</code> and re-authenticated to the management page on the new IP.</li>
-        <li>Rebuilt the DHCP scope: starting address <code>192.168.5.126</code> with a maximum of 75 users.</li>
-        <li>Renewed leases by toggling clients between static and DHCP, then confirmed the assignment with <code>ipconfig</code>.</li>
-        <li>Validated reachability by pinging the router management interface and peer workstations.</li>
-      </ul>
-
-      <h3 class="modal-subtitle">How I troubleshooted</h3>
-      <ul class="bullet-list">
-        <li>Checked the layer below before touching configuration: cable type and interface status first, then addressing.</li>
-        <li>Used CLI tools (<code>ipconfig</code>, <code>ping</code>) and lease renewal to prove each fix instead of assuming it.</li>
-        <li>Tested from more than one host so a working endpoint couldn't hide a broken one.</li>
+        <li>Confirmed both wired hosts picked up valid IPv4 addresses in the 192.168.x.x scope over DHCP.</li>
+        <li>Authenticated the laptop against the SSID with the pre-shared key and checked access point association.</li>
+        <li>Loaded an external domain from every endpoint and verified DNS resolution, routing through the cable gateway and access on both wired and wireless segments.</li>
       </ul>
 
       <dl class="modal-meta">
@@ -381,16 +412,84 @@
           <dd>Cisco Packet Tracer</dd>
         </div>
         <div class="modal-meta-item">
-          <dt>Labs documented</dt>
-          <dd>Two &mdash; SOHO networking, DHCP scope design</dd>
+          <dt>Focus</dt>
+          <dd>Physical media, WLAN setup, DHCP pool, WPA2-Personal</dd>
         </div>
         <div class="modal-meta-item">
-          <dt>Repository</dt>
-          <dd>adu0723/cisco-networking-academy-labs</dd>
+          <dt>Lab folder</dt>
+          <dd>01-wireless-router-and-client</dd>
         </div>
         <div class="modal-meta-item">
-          <dt>Related training</dt>
-          <dd>Cisco Networking Academy &mdash; Network Technician path (in progress)</dd>
+          <dt>Files</dt>
+          <dd>Packet Tracer .pka, README, topology.png</dd>
+        </div>
+      </dl>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-lab-02" aria-labelledby="modal-lab-02-title">
+    <header class="modal-header">
+      <div>
+        <p class="card-eyebrow">Lab 02 &mdash; Packet Tracer</p>
+        <h2 class="modal-title" id="modal-lab-02-title">DHCP on a Wireless Router</h2>
+      </div>
+      <button class="modal-close" type="button" data-modal-close aria-label="Close lab details">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <button class="modal-back" type="button" data-modal-open="modal-packet-tracer">
+        <span aria-hidden="true">&larr;</span> All labs
+      </button>
+
+      <figure class="modal-figure">
+        <a class="img-zoom" href="images/lab-02-dhcp-topology.png" target="_blank" rel="noopener">
+          <img class="modal-placeholder" src="images/lab-02-dhcp-topology.png" width="423" height="253"
+               alt="Packet Tracer topology for lab 02: a DHCP-enabled wireless router connected by three Ethernet cables to client PCs labelled PC0, PC1 and PC2." />
+          <span class="sr-only">Open the full-size lab 02 topology (opens in a new tab)</span>
+        </a>
+        <figcaption><strong>Lab 02</strong> &mdash; a DHCP-enabled wireless router serving three client PCs over copper straight-through links.</figcaption>
+      </figure>
+
+      <p class="modal-lead">
+        Router management and DHCP scope design: connecting client workstations, re-addressing the
+        router, resizing the DHCP scope and proving every lease with command-line checks.
+      </p>
+
+      <h3 class="modal-subtitle">What I configured</h3>
+      <ul class="bullet-list">
+        <li>Deployed three client PCs and a router, cabled from the PC FastEthernet interfaces to the router switch ports with copper straight-through cable.</li>
+        <li>Set the clients to request IP settings dynamically, then identified the default gateway handed out by the router.</li>
+        <li>Re-addressed the router from its factory default to <code>192.168.5.1</code> and re-authenticated to the management page on the new IP.</li>
+        <li>Rebuilt the DHCP scope: starting address <code>192.168.5.126</code> with a maximum of 75 users.</li>
+      </ul>
+
+      <h3 class="modal-subtitle">Verification</h3>
+      <ul class="bullet-list">
+        <li>Renewed leases by toggling clients between static and DHCP, then confirmed the assignment with <code>ipconfig</code>.</li>
+        <li>Rolled dynamic addressing out to the remaining workstations and confirmed each one pulled an address from the new scope.</li>
+        <li>Pinged the router management interface and peer workstations to prove internal reachability.</li>
+      </ul>
+
+      <dl class="modal-meta">
+        <div class="modal-meta-item">
+          <dt>Platform</dt>
+          <dd>Cisco Packet Tracer</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Focus</dt>
+          <dd>Router management, subnetting, DHCP scope design</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Lab folder</dt>
+          <dd>02-Configure-DHCP-on-a-Wireless-Router</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Files</dt>
+          <dd>Packet Tracer .pka, README, topology.png</dd>
         </div>
       </dl>
     </div>
