@@ -1138,69 +1138,6 @@ html.is-modal-open {
   border-radius: var(--radius);
 }
 
-/* Placeholder graphic parts */
-.ph-bg {
-  fill: var(--bg-soft);
-}
-
-.ph-frame {
-  fill: none;
-  stroke: var(--border-hover);
-  stroke-width: 1.5;
-  stroke-dasharray: 7 7;
-}
-
-.ph-node {
-  fill: #17243c;
-  stroke: var(--accent);
-  stroke-width: 1.5;
-}
-
-.ph-client {
-  fill: #16223a;
-  stroke: var(--border-hover);
-  stroke-width: 1.5;
-}
-
-.ph-text {
-  fill: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 13px;
-}
-
-.ph-label {
-  fill: var(--accent-alt);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-}
-
-.ph-bar {
-  fill: var(--border-hover);
-  opacity: 0.55;
-}
-
-.ph-bar--short {
-  opacity: 0.3;
-}
-
-.ph-dot {
-  fill: var(--accent-alt);
-}
-
-.ph-chip {
-  fill: var(--accent-alt-soft);
-  stroke: var(--accent-alt);
-  stroke-width: 1;
-}
-
-.ph-chip-text {
-  fill: var(--accent-alt);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-}
-
 .modal-meta {
   display: grid;
   gap: var(--space-md);
