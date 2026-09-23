@@ -2,14 +2,14 @@
    Craig Andrew Dela Cruz — Portfolio
    Dark tech theme | Hand-written CSS, no build step
    --------------------------------------------------------------------------
-   01. Design tokens        09. Projects & experience
-   02. Reset & base         10. Contact
-   03. Layout helpers       11. Footer
-   04. Accessibility        12. Scroll reveal
-   05. Header & navigation  13. Responsive
-   06. Hero                 14. Reduced motion
-   07. Section shell
-   08. About & credentials
+   01. Design tokens        09. Skills
+   02. Reset & base         10. Projects & experience
+   03. Layout helpers       11. Contact
+   04. Accessibility        12. Footer
+   05. Header & navigation  13. Scroll reveal
+   06. Hero                 14. Responsive
+   07. Section shell        15. Project card triggers & modals
+   08. About & credentials  16. Reduced motion
    ========================================================================== */
 
 /* ==========================================================================
@@ -370,6 +370,7 @@ svg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-xs);
   min-height: 48px;
   padding: 0 var(--space-lg);
   border: 1px solid transparent;
@@ -728,12 +729,6 @@ svg {
   color: var(--text-muted);
 }
 
-.footer-note {
-  margin: 0;
-  font-size: 0.82rem;
-  color: var(--text-dim);
-}
-
 /* ==========================================================================
    13. Scroll reveal (only active when JS is present)
    ========================================================================== */
@@ -817,7 +812,348 @@ html.js .reveal.is-visible {
 }
 
 /* ==========================================================================
-   15. Reduced motion
+   15. Project card triggers & modals
+   ========================================================================== */
+.card-trigger {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Stretch the button across the whole card: any click opens the modal,
+   while the accessible hit target stays a real button labelled by the title.
+   z-index is required because .bullet-list li is position: relative and
+   would otherwise paint above this overlay. */
+.card-trigger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.project-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.card-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: var(--space-md) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.card-hint::after {
+  content: "\2192";
+  transition: transform var(--transition);
+}
+
+.card:hover .card-hint::after {
+  transform: translateX(4px);
+}
+
+/* --- Dialog shell --- */
+.modal {
+  width: min(720px, calc(100vw - 2 * var(--space-md)));
+  max-height: min(88vh, 900px);
+  padding: 0;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.65);
+  overflow: auto;
+}
+
+/* Centre the dialog even where showModal() isn't supported. The UA's
+   height: fit-content keeps this from stretching to full height. */
+.modal[open] {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  margin: auto;
+  animation: modal-in 220ms ease-out;
+}
+
+.modal::backdrop {
+  background: rgba(3, 7, 18, 0.66);
+  backdrop-filter: blur(3px);
+}
+
+.modal[open]::backdrop {
+  animation: fade-in 220ms ease-out;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+html.is-modal-open {
+  overflow: hidden;
+}
+
+/* --- Dialog content --- */
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: clamp(1.15rem, 3.4vw, 1.5rem);
+}
+
+.modal-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition),
+    background-color var(--transition);
+}
+
+.modal-close:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.modal-body {
+  padding: var(--space-lg);
+}
+
+.modal-lead {
+  color: var(--text-muted);
+}
+
+.modal-subtitle {
+  margin: var(--space-lg) 0 var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-alt);
+}
+
+/* --- Screenshot gallery --- */
+.modal-gallery {
+  display: grid;
+  gap: var(--space-md);
+  margin: 0 0 var(--space-lg);
+}
+
+.modal-figure,
+.gallery-item {
+  margin: 0;
+}
+
+.modal-figure figcaption,
+.gallery-item figcaption {
+  margin-top: var(--space-xs);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+}
+
+/* --- Repository call to action --- */
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.modal-actions .btn {
+  flex: 0 1 auto;
+}
+
+.modal-actions-note {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.modal-actions-note code {
+  font-family: inherit;
+  color: var(--accent-alt);
+}
+
+.modal-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* Placeholder graphic parts */
+.ph-bg {
+  fill: var(--bg-soft);
+}
+
+.ph-frame {
+  fill: none;
+  stroke: var(--border-hover);
+  stroke-width: 1.5;
+  stroke-dasharray: 7 7;
+}
+
+.ph-node {
+  fill: #17243c;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.ph-client {
+  fill: #16223a;
+  stroke: var(--border-hover);
+  stroke-width: 1.5;
+}
+
+.ph-line {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+
+.ph-dash {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 6;
+  opacity: 0.45;
+}
+
+.ph-text {
+  fill: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.ph-label {
+  fill: var(--accent-alt);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.ph-bar {
+  fill: var(--border-hover);
+  opacity: 0.55;
+}
+
+.ph-bar--short {
+  opacity: 0.3;
+}
+
+.ph-dot {
+  fill: var(--accent-alt);
+}
+
+.ph-chip {
+  fill: var(--accent-alt-soft);
+  stroke: var(--accent-alt);
+  stroke-width: 1;
+}
+
+.ph-chip-text {
+  fill: var(--accent-alt);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.modal-meta {
+  display: grid;
+  gap: var(--space-md);
+  margin: var(--space-xl) 0 0;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+}
+
+.modal-meta-item dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.modal-meta-item dd {
+  margin: var(--space-2xs) 0 0;
+  color: var(--text);
+  font-size: 0.94rem;
+}
+
+@media (max-width: 639px) {
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .modal-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-item--wide {
+    grid-column: 1 / -1;
+  }
+
+  .modal-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   16. Reduced motion
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -839,9 +1175,11 @@ html.js .reveal.is-visible {
   .btn,
   .card,
   .card::before,
+  .card-hint::after,
   .tag,
   .contact-item,
   .contact-icon,
+  .modal-close,
   .hero-meta {
     transition: none;
   }
@@ -851,6 +1189,15 @@ html.js .reveal.is-visible {
   .btn:hover,
   .tag:hover {
     transform: none;
+  }
+
+  .card:hover .card-hint::after {
+    transform: none;
+  }
+
+  .modal[open],
+  .modal[open]::backdrop {
+    animation: none;
   }
 }
 

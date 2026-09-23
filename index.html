@@ -194,23 +194,33 @@
         <div class="projects-grid">
           <article class="card project-card" data-reveal>
             <p class="card-eyebrow">Packet Tracer Lab</p>
-            <h3 class="card-title">Cisco Networking &amp; Simulation Labs</h3>
+            <h3 class="card-title">
+              <button class="card-trigger" type="button" data-modal-target="modal-packet-tracer">
+                Cisco Networking &amp; Simulation Labs
+              </button>
+            </h3>
             <p class="card-subtitle">Network design &amp; troubleshooting practice</p>
             <ul class="bullet-list">
               <li>Configured SOHO wireless routers via the GUI, establishing secure WPA2-Personal wireless networks.</li>
               <li>Managed DHCP client leases and verified address assignment across connected clients.</li>
               <li>Performed basic IP addressing and network troubleshooting to ensure reliable client-to-router connectivity.</li>
             </ul>
+            <p class="card-hint" aria-hidden="true">View details</p>
           </article>
 
           <article class="card project-card" data-reveal>
             <p class="card-eyebrow">Work Immersion &mdash; 04/2023 &ndash; 05/2023</p>
-            <h3 class="card-title">Administrative E-Systems Assistant</h3>
+            <h3 class="card-title">
+              <button class="card-trigger" type="button" data-modal-target="modal-work-immersion">
+                Administrative E-Systems Assistant
+              </button>
+            </h3>
             <p class="card-subtitle">Barangay Loma De Gato, Clinic Department &mdash; Bulacan, Philippines</p>
             <ul class="bullet-list">
               <li>Maintained digital logs and record systems with strict data confidentiality and integrity.</li>
               <li>Performed routine data audits and system entry validation to eliminate records discrepancies.</li>
             </ul>
+            <p class="card-hint" aria-hidden="true">View details</p>
           </article>
         </div>
       </div>
@@ -288,6 +298,249 @@
     </section>
   </main>
 
+  <!-- ==================== PROJECT DETAIL MODALS ==================== -->
+  <dialog class="modal" id="modal-packet-tracer" aria-labelledby="modal-packet-tracer-title">
+    <header class="modal-header">
+      <div>
+        <p class="card-eyebrow">Packet Tracer Lab</p>
+        <h2 class="modal-title" id="modal-packet-tracer-title">Cisco Networking &amp; Simulation Labs</h2>
+      </div>
+      <button class="modal-close" type="button" data-modal-close aria-label="Close project details">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <div class="modal-gallery" role="group" aria-label="Lab screenshot placeholders">
+        <figure class="gallery-item gallery-item--wide">
+          <svg class="modal-placeholder" viewBox="0 0 640 340" role="img" aria-label="Placeholder illustration of a SOHO network topology with a router, switch, access point and three clients">
+            <rect class="ph-bg" x="0" y="0" width="640" height="340" rx="12" />
+            <rect class="ph-frame" x="10" y="10" width="620" height="320" rx="10" />
+
+            <rect class="ph-node" x="60" y="70" width="120" height="56" rx="8" />
+            <text class="ph-text" x="120" y="103" text-anchor="middle">Router</text>
+
+            <rect class="ph-node" x="260" y="70" width="120" height="56" rx="8" />
+            <text class="ph-text" x="320" y="103" text-anchor="middle">Switch</text>
+
+            <rect class="ph-node" x="460" y="70" width="120" height="56" rx="8" />
+            <text class="ph-text" x="520" y="103" text-anchor="middle">AP</text>
+
+            <line class="ph-line" x1="180" y1="98" x2="260" y2="98" />
+            <line class="ph-line" x1="380" y1="98" x2="460" y2="98" />
+
+            <path class="ph-dash" d="M120 126 V220" />
+            <path class="ph-dash" d="M320 126 V220" />
+            <path class="ph-dash" d="M520 126 V220" />
+
+            <rect class="ph-client" x="60" y="220" width="120" height="48" rx="8" />
+            <text class="ph-text" x="120" y="249" text-anchor="middle">PC</text>
+
+            <rect class="ph-client" x="260" y="220" width="120" height="48" rx="8" />
+            <text class="ph-text" x="320" y="249" text-anchor="middle">Laptop</text>
+
+            <rect class="ph-client" x="460" y="220" width="120" height="48" rx="8" />
+            <text class="ph-text" x="520" y="249" text-anchor="middle">Phone</text>
+
+            <text class="ph-label" x="30" y="312">PLACEHOLDER &mdash; Packet Tracer topology</text>
+          </svg>
+          <figcaption>Network diagram &mdash; placeholder for your topology screenshot.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <svg class="modal-placeholder" viewBox="0 0 320 200" role="img" aria-label="Placeholder illustration of a router DHCP lease table with four assigned addresses">
+            <rect class="ph-bg" x="0" y="0" width="320" height="200" rx="10" />
+            <rect class="ph-frame" x="6" y="6" width="308" height="188" rx="8" />
+
+            <rect class="ph-node" x="20" y="20" width="280" height="26" rx="4" />
+            <text class="ph-text" x="32" y="38">DHCP LEASES</text>
+
+            <rect class="ph-client" x="20" y="58" width="280" height="26" rx="4" />
+            <rect class="ph-bar" x="32" y="66" width="120" height="10" rx="5" />
+            <circle class="ph-dot" cx="282" cy="71" r="4" />
+
+            <rect class="ph-client" x="20" y="92" width="280" height="26" rx="4" />
+            <rect class="ph-bar" x="32" y="100" width="96" height="10" rx="5" />
+            <circle class="ph-dot" cx="282" cy="105" r="4" />
+
+            <rect class="ph-client" x="20" y="126" width="280" height="26" rx="4" />
+            <rect class="ph-bar" x="32" y="134" width="132" height="10" rx="5" />
+            <circle class="ph-dot" cx="282" cy="139" r="4" />
+
+            <rect class="ph-client" x="20" y="160" width="280" height="26" rx="4" />
+            <rect class="ph-bar" x="32" y="168" width="108" height="10" rx="5" />
+            <circle class="ph-dot" cx="282" cy="173" r="4" />
+          </svg>
+          <figcaption>DHCP lease table &mdash; placeholder.</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <svg class="modal-placeholder" viewBox="0 0 320 200" role="img" aria-label="Placeholder illustration of wireless security settings with WPA2-PSK enabled">
+            <rect class="ph-bg" x="0" y="0" width="320" height="200" rx="10" />
+            <rect class="ph-frame" x="6" y="6" width="308" height="188" rx="8" />
+
+            <text class="ph-text" x="20" y="40">SECURITY</text>
+            <rect class="ph-bar" x="20" y="52" width="130" height="10" rx="5" />
+            <rect class="ph-chip" x="200" y="44" width="100" height="26" rx="13" />
+            <text class="ph-chip-text" x="214" y="61">WPA2-PSK</text>
+
+            <text class="ph-text" x="20" y="106">SSID</text>
+            <rect class="ph-bar" x="20" y="118" width="164" height="10" rx="5" />
+            <rect class="ph-bar ph-bar--short" x="20" y="136" width="118" height="10" rx="5" />
+
+            <text class="ph-text" x="20" y="176">DHCP POOL</text>
+            <rect class="ph-bar" x="20" y="186" width="142" height="10" rx="5" />
+          </svg>
+          <figcaption>Wireless &amp; DHCP settings &mdash; placeholder.</figcaption>
+        </figure>
+      </div>
+
+      <div class="modal-actions">
+        <a class="btn btn--primary" href="https://github.com/adu0723/cisco-networking-academy-lab" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.35 4.7-4.58 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z" />
+          </svg>
+          <span>View the lab repository</span>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+        <p class="modal-actions-note">Repository: <code>adu0723/cisco-networking-academy-lab</code></p>
+      </div>
+
+      <p class="modal-lead">
+        Self-directed Cisco Packet Tracer labs that build a small-office/home-office (SOHO) network
+        end to end: assembling the topology, bringing up the wireless router, and verifying that
+        every client receives a working address.
+      </p>
+
+      <h3 class="modal-subtitle">What I configured</h3>
+      <ul class="bullet-list">
+        <li>Built the SOHO topology in Packet Tracer and configured the wireless router through its GUI setup screens.</li>
+        <li>Secured the wireless network with WPA2-Personal, setting the authentication and passphrase options.</li>
+        <li>Configured the router's DHCP pool and confirmed connected clients received valid leases.</li>
+        <li>Applied basic IPv4 addressing and subnetting, then tested client-to-router connectivity.</li>
+      </ul>
+
+      <h3 class="modal-subtitle">How I troubleshooted</h3>
+      <ul class="bullet-list">
+        <li>Worked bottom-up through the layers: interface status first, then addressing, then reachability tests.</li>
+        <li>Checked interface state, DHCP lease tables, and each client's IP configuration to isolate the failing hop.</li>
+        <li>Re-tested after every change so a fix was confirmed rather than assumed.</li>
+      </ul>
+
+      <dl class="modal-meta">
+        <div class="modal-meta-item">
+          <dt>Platform</dt>
+          <dd>Cisco Packet Tracer</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Focus</dt>
+          <dd>SOHO wireless, DHCP, IPv4 addressing</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Related training</dt>
+          <dd>Cisco Networking Academy &mdash; Network Technician path (in progress)</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Type</dt>
+          <dd>Simulation lab</dd>
+        </div>
+      </dl>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-work-immersion" aria-labelledby="modal-work-immersion-title">
+    <header class="modal-header">
+      <div>
+        <p class="card-eyebrow">Work Immersion &mdash; 04/2023 &ndash; 05/2023</p>
+        <h2 class="modal-title" id="modal-work-immersion-title">Administrative E-Systems Assistant</h2>
+      </div>
+      <button class="modal-close" type="button" data-modal-close aria-label="Close project details">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <figure class="modal-figure">
+        <svg class="modal-placeholder" viewBox="0 0 640 340" role="img" aria-label="Placeholder illustration of a digital records system listing validated log entries">
+          <rect class="ph-bg" x="0" y="0" width="640" height="340" rx="12" />
+          <rect class="ph-frame" x="10" y="10" width="620" height="320" rx="10" />
+
+          <rect class="ph-node" x="40" y="40" width="560" height="34" rx="6" />
+          <text class="ph-text" x="58" y="62">CLIENT RECORDS &mdash; LOG ENTRIES</text>
+
+          <rect class="ph-client" x="40" y="96" width="560" height="34" rx="6" />
+          <rect class="ph-bar" x="56" y="108" width="150" height="10" rx="5" />
+          <rect class="ph-bar ph-bar--short" x="224" y="108" width="96" height="10" rx="5" />
+          <circle class="ph-dot" cx="566" cy="113" r="5" />
+
+          <rect class="ph-client" x="40" y="142" width="560" height="34" rx="6" />
+          <rect class="ph-bar" x="56" y="154" width="128" height="10" rx="5" />
+          <rect class="ph-bar ph-bar--short" x="224" y="154" width="112" height="10" rx="5" />
+          <circle class="ph-dot" cx="566" cy="159" r="5" />
+
+          <rect class="ph-client" x="40" y="188" width="560" height="34" rx="6" />
+          <rect class="ph-bar" x="56" y="200" width="164" height="10" rx="5" />
+          <rect class="ph-bar ph-bar--short" x="224" y="200" width="84" height="10" rx="5" />
+          <circle class="ph-dot" cx="566" cy="205" r="5" />
+
+          <rect class="ph-client" x="40" y="234" width="560" height="34" rx="6" />
+          <rect class="ph-bar" x="56" y="246" width="138" height="10" rx="5" />
+          <rect class="ph-bar ph-bar--short" x="224" y="246" width="104" height="10" rx="5" />
+          <circle class="ph-dot" cx="566" cy="251" r="5" />
+
+          <rect class="ph-chip" x="40" y="286" width="132" height="30" rx="15" />
+          <text class="ph-chip-text" x="62" y="306">AUDIT PASSED</text>
+
+          <text class="ph-label" x="452" y="306">PLACEHOLDER</text>
+        </svg>
+        <figcaption>Placeholder image &mdash; replace with a records-system screenshot or a Clinic Department photo.</figcaption>
+      </figure>
+
+      <p class="modal-lead">
+        A work immersion placement with the Barangay Loma De Gato Clinic Department as
+        Administrative E-Systems Assistant, maintaining the digital records the clinic relied on
+        day to day.
+      </p>
+
+      <h3 class="modal-subtitle">What I did</h3>
+      <ul class="bullet-list">
+        <li>Maintained digital logs and record systems, keeping entries accurate, consistent and confidential.</li>
+        <li>Performed routine data audits and validated system entries to eliminate discrepancies between records.</li>
+        <li>Handled all records under strict confidentiality and integrity requirements.</li>
+      </ul>
+
+      <h3 class="modal-subtitle">What it taught me</h3>
+      <ul class="bullet-list">
+        <li>Documentation discipline &mdash; the same habit that keeps network changes traceable.</li>
+        <li>Verifying data before closing out a task instead of trusting the first entry.</li>
+        <li>Care with confidential records, which carries straight into handling infrastructure documentation.</li>
+      </ul>
+
+      <dl class="modal-meta">
+        <div class="modal-meta-item">
+          <dt>Organization</dt>
+          <dd>Barangay Loma De Gato &mdash; Clinic Department</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Role</dt>
+          <dd>Administrative E-Systems Assistant</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Dates</dt>
+          <dd>April 2023 &ndash; May 2023</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Location</dt>
+          <dd>Bulacan, Philippines</dd>
+        </div>
+      </dl>
+    </div>
+  </dialog>
+
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -295,7 +548,6 @@
         <span class="brand-mark" aria-hidden="true">&gt;_</span>
         Craig Andrew Dela Cruz &mdash; BSIT, Infrastructure Services
       </p>
-      <p class="footer-note">Built by hand with semantic HTML, CSS and vanilla JavaScript.</p>
     </div>
   </footer>
 
