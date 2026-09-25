@@ -10,8 +10,8 @@ A clean, modern, and responsive personal portfolio website built to showcase my 
 ## Features & Sections
 * **Hero / Intro:** Professional title highlighting my focus on Infrastructure Services, IT Support, and Networking.
 * **About Section:** Summary of my academic background as an Academic Scholar and consistent Dean's Lister at Bulacan State University.
-* **Interactive Projects & Labs:** Clickable project modals displaying hands-on networking simulations, Cisco NetAcad labs, and upcoming system administration projects.
 * **Skills Matrix:** Categorized breakdown of technical competencies including Networking & Protocols, Systems & Administration, and Soft Skills.
+* **Interactive Projects & Labs:** Clickable project modals displaying hands-on networking simulations, Cisco NetAcad labs, and upcoming system administration projects.
 * **Contact & Socials:** Direct access to my LinkedIn, GitHub, and professional email.
 
 ---
