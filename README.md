@@ -3,8 +3,7 @@
 A clean, modern, and responsive personal portfolio website built to showcase my background as a BSIT student specializing in Infrastructure Services and Networking.
 
 ## Live Website
-* **URL:** [https://adu0723.github.io/your-repo-name](https://github.com/adu0723/portfolio) *
-* [Website](https://adu0723.github.io/portfolio/)*
+* **URL:** [Website](https://adu0723.github.io/portfolio/)
 
 ---
 
