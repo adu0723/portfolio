@@ -191,7 +191,10 @@
         <p class="eyebrow">03 &mdash; Projects, Labs &amp; Experience</p>
         <h2 class="section-title" id="projects-title">Hands-on work</h2>
 
-        <div class="projects-grid">
+        <!-- Horizontal track: drop in as many .project-card articles as needed.
+             The row scrolls sideways, so the section height never grows.
+             tabindex makes the scroller reachable by keyboard (arrow keys). -->
+        <div class="projects-grid" role="region" aria-label="Hands-on work cards" tabindex="0">
           <article class="card project-card" data-reveal>
             <p class="card-eyebrow">Packet Tracer Labs</p>
             <h3 class="card-title">

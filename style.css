@@ -609,14 +609,60 @@ svg {
 /* ==========================================================================
    10. Projects & experience
    ========================================================================== */
+/* Horizontal track: cards scroll sideways so the section keeps a fixed height
+   no matter how many entries are added. Base size = one card + a peek of the
+   next one, which is what signals that the row scrolls.
+   A single grid row (not flex) is used on purpose: a grid row is sized from its
+   content, so the scroller's auto height can't resolve to a too-short box and
+   clip the stretched cards. */
 .projects-grid {
   display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(19rem, 82%);
   gap: var(--space-lg);
+  /* Setting overflow-x makes overflow-y compute to auto, which would clip the
+     card's -4px hover lift AND add a vertical scrollbar once data-reveal
+     offsets a not-yet-revealed card by 16px. Padding the block axis by that
+     same 16px keeps both inside the box. */
+  padding-block: var(--space-md);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-hover) var(--bg-soft);
 }
 
+.projects-grid:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: var(--radius);
+}
+
+.projects-grid::-webkit-scrollbar {
+  height: 10px;
+}
+
+.projects-grid::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: var(--bg-soft);
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--border-hover);
+}
+
+.projects-grid::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Fixed-width cards: they never squash as the list grows. min-width stops long
+   words from forcing the track wider than the set column size. */
 .project-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  scroll-snap-align: start;
 }
 
 .bullet-list {
@@ -767,6 +813,10 @@ html.js .reveal.is-visible {
   .contact-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .projects-grid {
+    grid-auto-columns: min(20rem, 44%);
+  }
 }
 
 @media (min-width: 768px) {
@@ -805,7 +855,7 @@ html.js .reveal.is-visible {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-columns: min(24rem, 40%);
   }
 }
 
@@ -840,11 +890,14 @@ html.js .reveal.is-visible {
   box-shadow: var(--shadow-md);
 }
 
+/* margin-top: auto pins the hint to the bottom of the card, so every card in
+   the scrolling row (which stretch to equal height) lines its hint up. */
 .card-hint {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  margin: var(--space-md) 0 0;
+  margin: auto 0 0;
+  padding-top: var(--space-md);
   font-family: var(--font-mono);
   font-size: 0.76rem;
   letter-spacing: 0.1em;

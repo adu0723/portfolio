@@ -5,6 +5,7 @@
    2. Scroll reveal (IntersectionObserver)
    3. Active section highlighting
    4. Modal dialogs (<dialog>), including lab drill-down
+   5. Horizontal project track (keyboard focus)
    ========================================================================== */
 (function () {
   "use strict";
@@ -227,4 +228,27 @@
     event.preventDefault();
     closeButton.click();
   });
+
+  /* ------------------------------------- 5. Horizontal project track focus */
+  // The projects row scrolls sideways. Browsers do not reliably scroll a
+  // nested scroller to reveal a card that receives focus by keyboard, which
+  // would leave focus off-screen, so nudge it into view here.
+  var projectTrack = document.querySelector(".projects-grid");
+
+  if (projectTrack) {
+    projectTrack.addEventListener("focusin", function (event) {
+      var card = event.target.closest(".project-card");
+      if (!card) return;
+
+      var track = projectTrack.getBoundingClientRect();
+      var target = card.getBoundingClientRect();
+      var slack = 24; // keep a sliver of the neighbouring card in view
+
+      if (target.left < track.left) {
+        projectTrack.scrollLeft -= track.left - target.left + slack;
+      } else if (target.right > track.right) {
+        projectTrack.scrollLeft += target.right - track.right + slack;
+      }
+    });
+  }
 })();
