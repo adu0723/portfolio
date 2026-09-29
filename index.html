@@ -222,6 +222,22 @@
             </ul>
             <p class="card-hint" aria-hidden="true">View details</p>
           </article>
+
+          <article class="card project-card" data-reveal>
+            <p class="card-eyebrow">Hardware &amp; IT Support</p>
+            <h3 class="card-title">
+              <button class="card-trigger" type="button" data-modal-target="modal-epson-l4260">
+                Office Peripheral Maintenance &amp; Diagnostics (Epson L4260)
+              </button>
+            </h3>
+            <p class="card-subtitle">Troubleshot mechanical printer failure, cleaned saturated waste ink pads, and reset internal software counters.</p>
+            <ul class="bullet-list">
+              <li><strong>Error code diagnosis:</strong> interpreted hardware warning states linked to waste ink limiters.</li>
+              <li><strong>Physical maintenance:</strong> disassembled chassis components to manually clean absorbent pads.</li>
+              <li><strong>Software reset:</strong> used service utility tools to clear waste ink counters and restore full printer operations.</li>
+            </ul>
+            <p class="card-hint" aria-hidden="true">View details</p>
+          </article>
         </div>
       </div>
     </section>
@@ -545,6 +561,103 @@
         <div class="modal-meta-item">
           <dt>Location</dt>
           <dd>Bulacan, Philippines</dd>
+        </div>
+      </dl>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-epson-l4260" aria-labelledby="modal-epson-l4260-title">
+    <header class="modal-header">
+      <div>
+        <p class="card-eyebrow">Hardware &amp; IT Support</p>
+        <h2 class="modal-title" id="modal-epson-l4260-title">Office Peripheral Maintenance &amp; Diagnostics (Epson L4260)</h2>
+      </div>
+      <button class="modal-close" type="button" data-modal-close aria-label="Close project details">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <p class="modal-lead">
+        Diagnosed the &ldquo;Ink Pad Needs Service&rdquo; software-locking error on an Epson L4260
+        multifunction printer. Performed physical teardown, washed and cleaned the absorbent waste
+        ink pads for reuse, and reset the internal EEPROM counters back to 0%.
+      </p>
+
+      <h3 class="modal-subtitle">Key highlights</h3>
+      <ul class="bullet-list">
+        <li><strong>Error code diagnosis:</strong> interpreted hardware warning states linked to waste ink limiters.</li>
+        <li><strong>Physical maintenance:</strong> disassembled chassis components to manually clean the absorbent pads.</li>
+        <li><strong>Software reset:</strong> utilized service utility tools to clear the waste ink counters and restore full printer operations.</li>
+      </ul>
+
+      <h3 class="modal-subtitle">Documentation &amp; proof</h3>
+      <figure class="modal-figure">
+        <div class="photo-grid">
+          <a class="photo-tile" href="images/epson-l4260-01-error-panel.jpg" target="_blank" rel="noopener">
+            <img src="images/epson-l4260-01-error-panel.jpg" width="1350" height="1800" loading="lazy" decoding="async"
+                 alt="Epson L4260 control panel showing error E-11 with the message that the ink pad needs service." />
+            <span class="sr-only">Open photo 01 full size (opens in a new tab)</span>
+          </a>
+
+          <a class="photo-tile" href="images/epson-l4260-02-printer-unit.jpg" target="_blank" rel="noopener">
+            <img src="images/epson-l4260-02-printer-unit.jpg" width="1350" height="1800" loading="lazy" decoding="async"
+                 alt="Epson L4260 EcoTank printer, with the black, yellow, magenta and cyan ink tank levels visible through the front window." />
+            <span class="sr-only">Open photo 02 full size (opens in a new tab)</span>
+          </a>
+
+          <a class="photo-tile" href="images/epson-l4260-03-waste-ink-access.jpg" target="_blank" rel="noopener">
+            <img src="images/epson-l4260-03-waste-ink-access.jpg" width="1350" height="1800" loading="lazy" decoding="async"
+                 alt="Rear of the Epson L4260 with the access cover removed, exposing the waste ink pad unit inside the chassis." />
+            <span class="sr-only">Open photo 03 full size (opens in a new tab)</span>
+          </a>
+
+          <a class="photo-tile" href="images/epson-l4260-04-waste-ink-pads.jpg" target="_blank" rel="noopener">
+            <img src="images/epson-l4260-04-waste-ink-pads.jpg" width="1350" height="1800" loading="lazy" decoding="async"
+                 alt="The removed waste ink pad assembly on a sink, its absorbent felt layers saturated and stained dark with ink." />
+            <span class="sr-only">Open photo 04 full size (opens in a new tab)</span>
+          </a>
+
+          <a class="photo-tile" href="images/epson-l4260-05-pads-cleaned.jpg" target="_blank" rel="noopener">
+            <img src="images/epson-l4260-05-pads-cleaned.jpg" width="1350" height="1800" loading="lazy" decoding="async"
+                 alt="The waste ink pad assembly after washing, with clean pale felt layers, next to the detached grey cover plate." />
+            <span class="sr-only">Open photo 05 full size (opens in a new tab)</span>
+          </a>
+        </div>
+        <figcaption><strong>Service photo log</strong> &mdash; the process in order: 01 locked E-11 error state, 02 unit intake, 03 waste ink pad access, 04 saturated pads removed, 05 pads washed and the assembly refitted. Select any photo to open it full size.</figcaption>
+      </figure>
+
+      <h3 class="modal-subtitle">Proof of repair &mdash; test print</h3>
+      <figure class="modal-figure">
+        <div class="video-wrap">
+          <video class="video-frame" controls muted loop playsinline preload="metadata"
+                 poster="images/epson-l4260-06-test-print-poster.jpg" width="720" height="1280">
+            <source src="videos/epson-l4260-test-print.mp4" type="video/mp4" />
+            Your browser cannot play embedded video.
+            <a href="videos/epson-l4260-test-print.mp4">Download the test-print clip (MP4, 2.7&nbsp;MB)</a>.
+          </video>
+        </div>
+        <figcaption><strong>Test print after the repair</strong> &mdash; the nozzle check and status-sheet print completing with no ink-pad error. 27 seconds, no audio.</figcaption>
+      </figure>
+
+      <dl class="modal-meta">
+        <div class="modal-meta-item">
+          <dt>Device</dt>
+          <dd>Epson L4260 EcoTank multifunction printer</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Issue</dt>
+          <dd>&ldquo;Ink Pad Needs Service&rdquo; software lock (waste ink counter limit)</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Focus</dt>
+          <dd>Physical teardown, waste ink pad cleaning, EEPROM counter reset</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Outcome</dt>
+          <dd>Counters reset to 0% &mdash; full print operations restored</dd>
         </div>
       </dl>
     </div>
