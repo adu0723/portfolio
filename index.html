@@ -241,6 +241,22 @@
             </ul>
             <p class="card-hint" aria-hidden="true">View details</p>
           </article>
+
+          <article class="card project-card" data-reveal>
+            <p class="card-eyebrow">IT Support Practice &mdash; Self-directed</p>
+            <h3 class="card-title">
+              <button class="card-trigger" type="button" data-modal-target="modal-service-desk">
+                Service Desk Simulator &mdash; Ticket Practice
+              </button>
+            </h3>
+            <p class="card-subtitle">Browser-based service desk scenarios worked end to end &mdash; accounts, desktops, connectivity, printers and hardware.</p>
+            <ul class="bullet-list">
+              <li><strong>Triage first:</strong> read the reported symptom, weigh impact and work the queue in priority order rather than first-in-first-out.</li>
+              <li><strong>Resolve the common faults:</strong> account lockouts and password resets, Windows desktop issues, IP and DNS connectivity faults, print queues and failing hardware.</li>
+              <li><strong>Close the loop:</strong> verify the fix with the user and record what was changed.</li>
+            </ul>
+            <p class="card-hint" aria-hidden="true">View details</p>
+          </article>
         </div>
       </div>
     </section>
@@ -663,6 +679,76 @@
           <dd>Counters reset to 0% &mdash; full print operations restored</dd>
         </div>
       </dl>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-service-desk" aria-labelledby="modal-service-desk-title">
+    <header class="modal-header">
+      <div>
+        <p class="card-eyebrow">IT Support Practice &mdash; Self-directed</p>
+        <h2 class="modal-title" id="modal-service-desk-title">Service Desk Simulator &mdash; Ticket Practice</h2>
+      </div>
+      <button class="modal-close" type="button" data-modal-close aria-label="Close project details">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <p class="modal-lead">
+        Self-directed practice on
+        <a href="https://servicedesk-simulator.com" target="_blank" rel="noopener">Service Desk Simulator <span class="sr-only">(opens in a new tab)</span></a>,
+        a browser-based help desk environment. Each scenario hands me a ticket the way a first-line
+        technician receives it: a user's description of the fault, a machine to inspect, and a fix to
+        prove before the ticket can be closed.
+      </p>
+
+      <h3 class="modal-subtitle">Issue types I've worked</h3>
+      <ul class="bullet-list">
+        <li><strong>Ticket triage &amp; prioritization:</strong> worked a queue of open tickets, judged impact and urgency, and handled the higher-priority incidents first.</li>
+        <li><strong>Accounts &amp; access:</strong> password resets, account lockouts and access requests handled through the simulated administration tooling.</li>
+        <li><strong>Operating system &amp; desktop:</strong> Windows-side configuration problems and desktop faults diagnosed from the machine's symptoms.</li>
+        <li><strong>Network &amp; connectivity:</strong> IP addressing and DNS problems &mdash; checking the adapter, the assigned address and name resolution before touching network equipment.</li>
+        <li><strong>Printers &amp; peripherals:</strong> offline, queued and driver-level print failures, including device-side checks.</li>
+        <li><strong>Hardware:</strong> isolating a failing component and confirming the diagnosis before replacing anything.</li>
+      </ul>
+
+      <h3 class="modal-subtitle">How I work a ticket</h3>
+      <ul class="bullet-list">
+        <li>Confirm the symptom and its impact with the user before changing anything.</li>
+        <li>Rule out the cheap, common causes first &mdash; cabling, power, credentials, a recent change &mdash; before deeper steps.</li>
+        <li>Change one thing at a time, so I know what actually fixed it.</li>
+        <li>Verify the result from the user's side, then document the steps taken.</li>
+        <li>Escalate instead of guessing when the fault sits outside first-line scope.</li>
+      </ul>
+
+      <dl class="modal-meta">
+        <div class="modal-meta-item">
+          <dt>Platform</dt>
+          <dd>Service Desk Simulator &mdash; browser-based</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Type</dt>
+          <dd>Self-directed practice, no live end users</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Focus</dt>
+          <dd>Triage, accounts, desktop, connectivity, printers, hardware</dd>
+        </div>
+        <div class="modal-meta-item">
+          <dt>Level</dt>
+          <dd>Somewhat experienced &mdash; comfortable with common first-line ticket types</dd>
+        </div>
+      </dl>
+
+      <div class="modal-actions">
+        <a class="btn btn--ghost" href="https://servicedesk-simulator.com" target="_blank" rel="noopener">
+          <span>Try the simulator</span>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+        <p class="modal-actions-note">Practice platform: <code>servicedesk-simulator.com</code></p>
+      </div>
     </div>
   </dialog>
 
