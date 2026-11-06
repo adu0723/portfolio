@@ -5,6 +5,9 @@ A clean, modern, and responsive personal portfolio website built to showcase my 
 ## Live Website
 * **URL:** [Website](https://adu0723.github.io/portfolio/)
 
+## Resume Samples
+Resume source files and PDF exports live in `resume/` and are intentionally excluded from version control (see `.gitignore`), so they stay local only.
+
 ---
 
 ## Features & Sections
